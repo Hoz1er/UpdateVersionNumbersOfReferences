@@ -8,10 +8,11 @@ namespace UpdateCiteVersion
     class Program
     {
         private static string projectPath = "";
-        private static string acvPath = "";
+        private static string masterPath = "";
         private static string backupPath = "";
         private static string logPath = "";
         private static string tempFile = "";
+        private static string verName = "hgx_ver";//对应版本号的参数名
         private static Dictionary<string, string> fileHash = new Dictionary<string, string>();
         private static List<string> failedFiles = new List<string>();
 
@@ -38,13 +39,13 @@ namespace UpdateCiteVersion
 
             Console.WriteLine("<--------------------Begin-------------------->");
 
-            acvPath = projectPath.Substring(0, projectPath.LastIndexOf('\\')) + "\\AddCiteVersionFolder";    // acvPath <- D:\AddCiteVersionFolder
-            logPath = acvPath + "\\Log\\Log.txt";                                                            // logPath <- D:\AddCiteVersionFolder\Log\Log.txt
-            backupPath = acvPath + "\\Backup";                                                               // backupPath <- D:\AddCiteVersionFolder\Backup
+            masterPath = projectPath.Substring(0, projectPath.LastIndexOf('\\')) + "\\UpdateCiteVersionFolder";    // acvPath <- D:\UpdateCiteVersionFolder
+            logPath = masterPath + "\\Log\\Log.txt";                                                            // logPath <- D:\UpdateCiteVersionFolder\Log\Log.txt
+            backupPath = masterPath + "\\Backup";                                                               // backupPath <- D:\UpdateCiteVersionFolder\Backup
 
-            if (Directory.Exists(acvPath))
-                Directory.Delete(acvPath, true);
-            Directory.CreateDirectory(acvPath + "\\Log");
+            if (Directory.Exists(masterPath))
+                Directory.Delete(masterPath, true);
+            Directory.CreateDirectory(masterPath + "\\Log");
             Directory.CreateDirectory(backupPath);
 
             DirectoryInfo theFolder = new DirectoryInfo(projectPath);
@@ -113,7 +114,7 @@ namespace UpdateCiteVersion
             string thepath = file.FullName;
             StreamReader sr = new StreamReader(thepath);
 
-            tempFile = acvPath + '\\' + file.Name;
+            tempFile = masterPath + '\\' + file.Name;
 
             StreamWriter sw = new StreamWriter(tempFile, false, new UTF8Encoding(true));
             string line = "";
@@ -171,7 +172,7 @@ namespace UpdateCiteVersion
                 fileHash.Add(citeFile, getFileHash(citeFile));
 
             Dictionary<string, string> p = new Dictionary<string, string>();
-            p["acv_ver"] = fileHash[citeFile];
+            p[verName] = fileHash[citeFile];
 
             if (!string.IsNullOrEmpty(strPar))
             {
@@ -181,7 +182,7 @@ namespace UpdateCiteVersion
                     if (!string.IsNullOrEmpty(parList[i]))
                     {
                         string[] parItem = parList[i].Split('=');
-                        if (parItem.Length == 2 && parItem[0] != "acv_ver")
+                        if (parItem.Length == 2 && parItem[0] != verName)
                             p[parItem[0]] = parItem[1];
                     }
                 }
