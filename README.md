@@ -1,3 +1,4 @@
+<script type="text/javascript" src="http://flowchart.js.org/flowchart-latest.js"></script>
 # UpdateWebCiteVersion
 Update(/Add) Cite Version by file's hash code ( C#  Console )
 
