@@ -125,7 +125,7 @@ namespace UpdateCiteVersion
                     (line.IndexOf("<link") > -1 && line.IndexOf("href=\"") > -1))
                 {   //<script src="/common.js" type="text/javascript"></script>
                     //<link href="/main.css" rel = "stylesheet" />
-                    line = ChangeStrVersion(line);
+                    line = ChangeStrVersion(line,thepath);
                 }
                 line += "\r\n";
                 sw.Write(line);
@@ -146,7 +146,7 @@ namespace UpdateCiteVersion
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        private static string ChangeStrVersion(string str)
+        private static string ChangeStrVersion(string str,string theFile)
         {
             int beginIndex = Math.Max(str.IndexOf("src=\"") + 4, str.IndexOf("href=\"") + 5);
 
