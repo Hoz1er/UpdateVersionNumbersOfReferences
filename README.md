@@ -1,17 +1,16 @@
 # UpdateWebCiteVersion
 Update(/Add) Cite Version by file's hash code ( C#  Console )
 
-<p style="color:blueviolet;font-weight:900;font-size:34px;">1.使用方式：</p>
-<p style="color:black;font-size:22px;text-indent:60px;">输入项目根目录的路径</p>
-<p style="color:blueviolet;font-weight:900;font-size:34px;">2.使用示例：</p>
+## 1.使用方式：
+> 输入项目根目录的路径
+## 2.使用示例：
 
 ![实例截图](https://github.com/hgx-Obsess10n/UpdateWebCiteVersion/blob/master/example/example_0.png?raw=true)
 
 <a style="margin-left:20px;text-decoration:underline;" href="https://github.com/hgx-Obsess10n/WebSLN">点此链接打开上面例子所用项目</a>
-<p style="color:black;font-size:22px;text-indent:60px;"></p>
 
-<p style="color:blueviolet;font-weight:900;font-size:34px;">3.流程图：</p>
-<p style="color:blueviolet;font-weight:600;font-size:22px;">(1)流程图1[主流程]：</p>
+## 3.流程图：
+#### (1)流程图1[主流程]：
 
 ```flow
 
@@ -41,7 +40,7 @@ c3(yes,right)->op6(right)->op2
 c3(no)->e
 ```
 ![实例截图](https://github.com/hgx-Obsess10n/UpdateWebCiteVersion/blob/master/example/flow_1.png?raw=true)
-<p style="color:blueviolet;font-weight:600;font-size:22px;">(2)流程图2[单个文件更新]：</p>
+#### (2)流程图2[单个文件更新]：
 
 ```flow
 
@@ -63,7 +62,7 @@ c2(yes,bottom)->op4(right)->op5
 op5(right)->c1
 ```
 ![实例截图](https://github.com/hgx-Obsess10n/UpdateWebCiteVersion/blob/master/example/flow_2.png?raw=true)
-<p style="color:blueviolet;font-weight:600;font-size:22px;">(3)流程图3[单行字符串更新]：</p>
+#### (3)流程图3[单行字符串更新]：
 
 ```flow
 
