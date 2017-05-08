@@ -41,6 +41,7 @@ op5->c3
 c3(yes,right)->op6(right)->op2
 c3(no)->e
 ```
+![实例截图](https://github.com/hgx-Obsess10n/UpdateWebCiteVersion/blob/master/example/flow_1.png?raw=true)
 <p style="color:blueviolet;font-weight:600;font-size:22px;">(2)流程图2[单个文件更新]：</p>
 
 ```flow
@@ -62,7 +63,7 @@ c2(no,left)->op5
 c2(yes,bottom)->op4(right)->op5
 op5(right)->c1
 ```
-
+![实例截图](https://github.com/hgx-Obsess10n/UpdateWebCiteVersion/blob/master/example/flow_2.png?raw=true)
 <p style="color:blueviolet;font-weight:600;font-size:22px;">(3)流程图3[单行字符串更新]：</p>
 
 ```flow
@@ -77,8 +78,8 @@ op4=>operation: 在字典中取出该文件的hash值
 op5=>operation: 分析文件引用后面所附带的参数，并加入/更新版本号（hash值）
 op6=>operation: 将分析时拆解得到的各部分信息重新拼接为一行字符串
 
-st->op1->op2->c1
-c1(yes)->op4->op5->op6->e
+st->op1(right)->op2->c1
+c1(yes)->op4(right)->op5->op6->e
 c1(no)->op3->op4
 ```
-
+![实例截图](https://github.com/hgx-Obsess10n/UpdateWebCiteVersion/blob/master/example/flow_3.png?raw=true)
