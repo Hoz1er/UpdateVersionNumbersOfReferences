@@ -12,7 +12,7 @@ namespace UpdateCiteVersion
         private static string backupPath = "";
         private static string logPath = "";
         private static string tempFile = "";
-        private static string verName = "hgx_ver";//对应版本号的参数名
+        private static string verName = "hgx_ver";//版本号的参数名
         private static Dictionary<string, string> fileHash = new Dictionary<string, string>();
         private static List<string> failedFiles = new List<string>();
 
@@ -164,10 +164,28 @@ namespace UpdateCiteVersion
                 strPar = strUrl.Substring(parIndex + 1);
             }
 
-            string url = strBeforePar.Replace("../", "");
-            if (url[0] != '/')
-                url = '/' + url;
-            string citeFile = projectPath + url;
+            #region 分析引用文件的完整路径 -> citeFile
+            string citeFile = "";
+            if (strBeforePar.Substring(0, 3) == "../")
+            {
+                string tempUrl = strBeforePar;
+                theFile = theFile.Substring(0, theFile.LastIndexOf('\\') + 1);
+                while (tempUrl.Substring(0, 3) == "../")
+                {
+                    theFile = theFile.Substring(0, theFile.LastIndexOf('\\') + 1);
+                    tempUrl = tempUrl.Substring(3);
+                }
+                citeFile = theFile + tempUrl;
+            }
+            else
+            {
+                if (strBeforePar[0] != '/')
+                    citeFile = theFile.Substring(0, theFile.LastIndexOf('\\') + 1) + strBeforePar.Replace("/", "\\");
+                else
+                    citeFile = projectPath + strBeforePar.Replace("/","\\");
+            }
+            #endregion
+            
             if (!fileHash.ContainsKey(citeFile))
                 fileHash.Add(citeFile, getFileHash(citeFile));
 
