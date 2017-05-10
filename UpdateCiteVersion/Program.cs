@@ -45,6 +45,8 @@ namespace UpdateCiteVersion
 
             if (Directory.Exists(masterPath))
                 Directory.Delete(masterPath, true);
+
+            Directory.CreateDirectory(masterPath);
             Directory.CreateDirectory(masterPath + "\\Log");
             Directory.CreateDirectory(backupPath);
 
