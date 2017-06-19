@@ -140,7 +140,7 @@ namespace UpdateCiteVersion
 
             if (!string.IsNullOrWhiteSpace(tempFile) && File.Exists(tempFile))
                 File.Delete(tempFile);
-            Console.WriteLine("[ ChangeSuccess ]" + thepath.Replace(projectPath, "~"));
+            Console.WriteLine("[ Success ]" + thepath.Replace(projectPath, "~"));
 
         }
         /// <summary>
