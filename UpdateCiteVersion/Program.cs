@@ -16,7 +16,7 @@ namespace UpdateCiteVersion
         private static Dictionary<string, string> fileHash = new Dictionary<string, string>();
         private static List<string> failedFiles = new List<string>();
 
-        private static List<string> fileType = new List<string>() { "html", "htm", "asp", "aspx", "master" };//需更新引用版本的文件后缀
+        private static List<string> fileType = new List<string>() { "html", "htm", "asp", "aspx", "master","cshtml","jsp" };//需更新引用版本的文件后缀
         static void Main(string[] args)
         {
             do
